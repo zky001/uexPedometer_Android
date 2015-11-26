@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest >
+ 	<!-- 后台记步服务 -->
+    <service
+        android:name="org.zywx.wbpalmstar.plugin.uexpedometer.StepService"
+        android:process=":backgroundService" >
+    </service>
+
+    <!-- 接受开机完成广播，实现开机自启 -->
+    <receiver android:name="org.zywx.wbpalmstar.plugin.uexpedometer.BootCompleteReceiver" >
+        <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+        </intent-filter>
+    </receiver>
+
+</manifest>

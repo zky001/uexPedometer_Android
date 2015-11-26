@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+
+<script type="text/javascript">
+	function funcD1(opCode, dataType, data) {
+		document.getElementById('f1').innerHTML = data;
+		document.getElementById('f2').innerHTML = "此接口将关闭后台记步服务";
+	}
+	function funcD2(opCode, dataType, data) {
+		document.getElementById('f2').innerHTML = data;
+		document.getElementById('f1').innerHTML = "此接口将开启后台记步服务";
+	}
+	function funcD3(opCode, dataType, data) {
+		document.getElementById('f3').innerHTML = data;
+	}
+	function funcD4(opCode, dataType, data) {
+		document.getElementById('f4').innerHTML = data;
+	}
+	function queryStepHistory(){
+		var date = document.getElementById("date").value;
+		uexPedometer.queryStepHistory(date);
+	}
+	<!-- 启动这个html时进行的操作，进行回调   -->
+	window.uexOnload = function(type) {
+		if (type == 0) {
+			uexPedometer.cbStartStepService = funcD1;
+			uexPedometer.cbStopStepService = funcD2;
+			uexPedometer.cbQueryStepToday = funcD3;
+			uexPedometer.cbQueryStepHistory = funcD4;
+		}
+	}
+</script>
+</head>
+
+<body>
+	<div class="tit">uexPedometer对象</div>
+	<div class="conbor">
+		<div class="consj">
+
+			<span>1.startStepService接口</span>
+			<div class="tcxx" id="f1">此接口将开启后台记步服务</div>
+			<input class="btn" type="button" value="点击调用接口"
+				onclick="uexPedometer.startStepService();" /><br /> <br /> 
+				
+			<span>2.stopStepService接口</span>
+			<div class="tcxx" id="f2">此接口将关闭后台记步服务</div>
+			<input class="btn" type="button" value="点击调用接口"
+				onclick="uexPedometer.stopStepService();" /><br /> <br /> 
+				
+			<span>3.queryStepToday接口</span>
+			<div class="tcxx" id="f3">此接口将查询今天的步数</div>
+			<input class="btn" type="button" value="点击调用接口"
+				onclick="uexPedometer.queryStepToday();" /><br /> <br /> 
+				
+			<span>4.queryStepHistory接口</span>
+			<div class="tcxx" id="f4">此接口将根据日期查询对应的步数,请输入标准日期格式"yyyy-mm-dd"</div>
+			<span>date</span>
+			<input class="textbox" type="text" id="date" value="2015-11-20">
+			<input class="btn" type="button" value="点击调用接口"
+				onclick="queryStepHistory();" /><br /> <br />
+				
+		<!-- <span>4.reviseSensitivity接口</span>
+			<div class="tcxx" id="f4">此接口将根据输入的等级修改计步器灵敏度，只允许输入1-10</div>
+			<span>sensitivity</span>
+			<input class="textbox" type="text" id="sensitivity" value="3">
+			<input class="btn" type="button" value="点击调用接口"
+				onclick="reviseSensitivity();" /><br /> <br /> -->
+			
+
+		</div>
+	</div>
+</body>
+</html>

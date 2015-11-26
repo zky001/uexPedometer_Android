@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <!-- uexPedometer -->
+    <string name="plugin_pedometer_step_service_ticker">开始后台记步</string>
+    <string name="plugin_pedometer_step_number">步</string>
+    <string name="plugin_pedometer_step_calorie">千卡</string>
+</resources>
